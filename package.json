@@ -1,6 +1,6 @@
 {
   "name": "react-photo-collage",
-  "version": "1.0.8",
+  "version": "1.0.7",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -37,11 +37,14 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },
+  "peerDependencies": {
+    "react": ">=16.6.0"
+  },
   "dependencies": {
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-images": "^1.0.0"
   }
 }
