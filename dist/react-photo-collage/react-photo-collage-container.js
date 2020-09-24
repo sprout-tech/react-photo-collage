@@ -56,16 +56,16 @@ var ReactPhotoCollageContainer = function (props) {
     var width = currProps.width, height = currProps.height, layout = currProps.layout, photos = currProps.photos, showNumOfRemainingPhotos = currProps.showNumOfRemainingPhotos;
     var layoutNum = layout.reduce(function (accumulator, currentValue) { return accumulator + currentValue; }, 0);
     var remainingNum = photos.length - layoutNum;
-    var _a = react_1.useState(createLayoutPhotoMaps(layout, photos)), layoutPhotoMaps = _a[0], setLayoutPhotoMaps = _a[1];
-    var _b = react_1.useState(false), viewerIsOpen = _b[0], setViewerIsOpen = _b[1];
-    var _c = react_1.useState(0), currentImage = _c[0], setCurrentImage = _c[1];
-    var _d = react_1.useState(Object.keys(layoutPhotoMaps).length > 0), allowRender = _d[0], setAllowRender = _d[1];
-    // useEffect(() => {
-    //     setLayoutPhotoMaps(createLayoutPhotoMaps(layout, photos));
-    // }, []);
-    // useEffect(() => {
-    //     Object.keys(layoutPhotoMaps).length ? setAllowRender(true) : setAllowRender(false);
-    // }, [layoutPhotoMaps]);
+    var _a = react_1.useState(false), allowRender = _a[0], setAllowRender = _a[1];
+    var _b = react_1.useState({}), layoutPhotoMaps = _b[0], setLayoutPhotoMaps = _b[1];
+    var _c = react_1.useState(false), viewerIsOpen = _c[0], setViewerIsOpen = _c[1];
+    var _d = react_1.useState(0), currentImage = _d[0], setCurrentImage = _d[1];
+    react_1.useEffect(function () {
+        setLayoutPhotoMaps(createLayoutPhotoMaps(layout, photos));
+    }, []);
+    react_1.useEffect(function () {
+        Object.keys(layoutPhotoMaps).length ? setAllowRender(true) : setAllowRender(false);
+    }, [layoutPhotoMaps]);
     var openLightbox = react_1.useCallback(function (id) {
         setCurrentImage(parseInt(id));
         setViewerIsOpen(true);

@@ -50,17 +50,17 @@ const ReactPhotoCollageContainer: React.FC<ReactPhotoCollageContainerProps> = (p
     const { width, height, layout, photos, showNumOfRemainingPhotos } = currProps;
     const layoutNum = layout.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     const remainingNum = photos.length - layoutNum;
-    const [layoutPhotoMaps, setLayoutPhotoMaps] = useState<any>(createLayoutPhotoMaps(layout, photos));
+    const [allowRender, setAllowRender] = useState<boolean>(false);
+    const [layoutPhotoMaps, setLayoutPhotoMaps] = useState<any>({});
     const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false);
     const [currentImage, setCurrentImage] = useState<number>(0);
-    const [allowRender, setAllowRender] = useState<boolean>(Object.keys(layoutPhotoMaps).length> 0);
 
-    // useEffect(() => {
-    //     setLayoutPhotoMaps(createLayoutPhotoMaps(layout, photos));
-    // }, []);
-    // useEffect(() => {
-    //     Object.keys(layoutPhotoMaps).length ? setAllowRender(true) : setAllowRender(false);
-    // }, [layoutPhotoMaps]);
+    useEffect(() => {
+        setLayoutPhotoMaps(createLayoutPhotoMaps(layout, photos));
+    }, []);
+    useEffect(() => {
+        Object.keys(layoutPhotoMaps).length ? setAllowRender(true) : setAllowRender(false);
+    }, [layoutPhotoMaps]);
 
     const openLightbox = useCallback((id) => {
         setCurrentImage(parseInt(id));
